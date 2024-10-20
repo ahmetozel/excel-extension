@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Highlight Selected Cells</title>
+    <meta charset="UTF-8">
+    <script src="https://appsforoffice.microsoft.com/lib/1/hosted/office.js"></script>
+    <script>
+        function highlightCells() {
+            Excel.run(function (context) {
+                var sheet = context.workbook.getActiveWorksheet();
+                var selectedRange = sheet.getSelectedRange();
+                
+                // Sarı arka plan rengi ayarla
+                selectedRange.format.fill.color = "yellow";
+                
+                return context.sync();
+            }).catch(function (error) {
+                console.log(error);
+            });
+        }
+    </script>
+</head>
+<body>
+    <button onclick="highlightCells()">Highlight Selected Cells</button>
+</body>
+</html>
